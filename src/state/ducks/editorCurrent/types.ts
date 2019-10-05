@@ -53,14 +53,6 @@ export const EditorCurrentActionTypes = {
   ADD_WORKBENCH_ITEM: "@@editorCurrent/ADD_WORKBENCH_ITEM",
   UPDATE_WORKBENCH_ITEM: "@@editorCurrent/UPDATE_WORKBENCH_ITEM",
   REMOVE_WORKBENCH_ITEM: "@@editorCurrent/REMOVE_WORKBENCH_ITEM"
-  //   SET_TEXT: "@@editorCurrent/SET_TEXT",
-  //   SET_TEXT_POSITION: "@@editorCurrent/SET_TEXT_POSITION",
-  //   SET_TEXT_SIZE: "@@editorCurrent/SET_TEXT_SIZE",
-  //   SET_TEXT_COLOR: "@@editorCurrent/SET_TEXT_COLOR",
-  //   SET_TEXT_FONT: "@@editorCurrent/SET_TEXT_FONT",
-  //   SET_TEXT_FONT_STYLE: "@@editorCurrent/SET_TEXT_FONT_STYLE",
-  //   SET_LOGO: "@@editorCurrent/SET_LOGO",
-  //   REMOVE_LOGO: "@@editorCurrent/REMOVE_LOGO"
 };
 
 export interface EditorCurrentDispatchToProps {
@@ -70,10 +62,4 @@ export interface EditorCurrentDispatchToProps {
   addWorkbenchItem: (add: WorkbenchItem) => void;
   updateWorkbenchItem: (update: WorkbenchItem, id: string) => void;
   removeWorkbenchItem: (id: string) => void;
-  //   setText: (text: string) => void;
-  //   setTextSize: (size: string) => void;
-  //   setTextColor: (color: string) => void;
-  //   setTextFont: (font: string) => void;
-  //   setTextFontStyle: (fontStyle: string) => void;
-  //   setLogo: (logo: ILogo) => void;
 }

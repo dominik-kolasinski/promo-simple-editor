@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { ApplicationState } from "../../state/ducks/";
 import Container from "../draggable/Container";
@@ -28,7 +28,7 @@ const Workbench: React.FC = () => {
   };
 
   return (
-    <div>
+    <div style={{ height: "400px" }}>
       <div id="workbenchToImage">
         <StyledWorkbenchBackground
           workbenchBackground={state.workbenchBackground}

@@ -24,7 +24,7 @@ const StyledAppContainer = styled.div`
   align-items: center;
   min-width: 1200px;
   min-height: 800px;
-  background: linear-gradient(to right, #12c2e9, #c471ed, #f64f59);
+  background: linear-gradient(to right, #12c2e9, #c471ed, #ff4070);
   height: 100vh;
 `;
 

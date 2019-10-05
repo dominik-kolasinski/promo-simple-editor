@@ -1,15 +1,8 @@
-import React, { useState } from "react";
-import styled from "styled-components";
-import uuidv4 from "uuidv4";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { ApplicationState } from "../../../state/ducks";
 import { WorkbenchItem } from "../../../state/ducks/editorCurrent/types";
-import {
-  addWorkbenchItem,
-  updateWorkbenchItem
-} from "../../../state/ducks/editorCurrent/actions";
-import Logo from "../../draggable/Logo";
-import TextValueTool from "./TextValueTool";
+import { updateWorkbenchItem } from "../../../state/ducks/editorCurrent/actions";
 
 interface TextFontToolState {
   textItem: WorkbenchItem;
@@ -48,7 +41,7 @@ const TextFontTool: React.FC = () => {
         value="'Arial', Helvetica, sans-serif"
         disabled={!state.textItem}
         onChange={handleOptionChange}
-      />{" "}
+      />
       Arial
       <input
         type="radio"
@@ -56,16 +49,15 @@ const TextFontTool: React.FC = () => {
         value="'Times New Roman', Times, serif"
         disabled={!state.textItem}
         onChange={handleOptionChange}
-      />{" "}
+      />
       Times New Roman
-      <br />
       <input
         type="radio"
         name="fontfamily"
         value="'Open Sans', sans-serif"
         disabled={!state.textItem}
         onChange={handleOptionChange}
-      />{" "}
+      />
       Open Sans
     </>
   );

@@ -1,12 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import { useDrag } from "react-dnd";
-// import ContextMenu from "react-context-menu";
 import {
   LogoSettings,
-  TextSettings,
-  WorkbenchItem
+  TextSettings
 } from "../../state/ducks/editorCurrent/types";
 import { removeWorkbenchItem } from "../../state/ducks/editorCurrent/actions";
 
@@ -14,13 +12,9 @@ const dragStyle: React.CSSProperties = {
   position: "absolute",
   width: "1px",
   height: "1px",
-  background: "transparent"
+  background: "transparent",
+  outline: "none"
 };
-
-// const dragStyleLogo: React.CSSProperties = {
-//   position: "absolute",
-//   background: "transparent"
-// };
 
 export interface ItemProps {
   id?: any;
@@ -30,20 +24,7 @@ export interface ItemProps {
   hideSourceOnDrag?: boolean;
   textSettings?: TextSettings;
   logoSettings?: LogoSettings;
-  // onCLick(): void;
 }
-
-interface Items {
-  items: WorkbenchItem[];
-}
-
-// const style = {
-//   display: "flex",
-//   alignItems: "center",
-//   justifyContent: "center",
-//   border: "solid 1px #ddd",
-//   background: "transparent"
-// };
 
 const Item: React.FC<ItemProps> = ({
   id,
@@ -54,19 +35,30 @@ const Item: React.FC<ItemProps> = ({
   textSettings,
   logoSettings
 }) => {
-  const dispatch = useDispatch();
-  const [deleteVisible, setDeleteVisible] = useState(false);
-  const [toDeleteId, setToDeleteId] = useState("");
-
-  const handleItemClick = (itemId: string) => {
-    setDeleteVisible(true);
-    setToDeleteId(itemId);
+  const refClicked = useRef(null);
+  const useOnClickOutside = (ref: any, handler: any) => {
+    useEffect(() => {
+      const listener = (event: any) => {
+        if (!ref.current || ref.current.contains(event.target)) {
+          return;
+        }
+        handler(event);
+      };
+      document.addEventListener("mousedown", listener);
+      document.addEventListener("touchstart", listener);
+      return () => {
+        document.removeEventListener("mousedown", listener);
+        document.removeEventListener("touchstart", listener);
+      };
+    }, [ref, handler]);
   };
+  useOnClickOutside(refClicked, () => setContextMenuOpen(false));
 
-  const handleItemDelete = () => {
-    dispatch(removeWorkbenchItem(toDeleteId));
-    setDeleteVisible(false);
-    setToDeleteId("");
+  const dispatch = useDispatch();
+  const [isContextMenuOpen, setContextMenuOpen] = useState(false);
+
+  const handleItemDelete = (id: string) => {
+    dispatch(removeWorkbenchItem(id));
   };
 
   const [{ isDragging }, drag] = useDrag({
@@ -79,11 +71,30 @@ const Item: React.FC<ItemProps> = ({
   if (isDragging && hideSourceOnDrag) {
     return <div ref={drag} />;
   }
+
+  const handleContextClick = (event: React.MouseEvent<HTMLDivElement>) => {
+    event.preventDefault();
+    setContextMenuOpen(true);
+  };
+
   return (
-    <div ref={drag} style={{ ...dragStyle, left, top }}>
-      {/* {!deleteVisible && (
-        <button onClick={() => handleItemDelete()}>Delete</button>
-      )} */}
+    <div
+      ref={drag}
+      style={{ ...dragStyle, left, top }}
+      onContextMenu={event => handleContextClick(event)}
+      tabIndex={-1}
+    >
+      {isContextMenuOpen && (
+        <div
+          ref={refClicked}
+          style={{
+            position: "absolute",
+            zIndex: 1000
+          }}
+        >
+          <button onClick={() => handleItemDelete(id)}>Delete</button>
+        </div>
+      )}
       {type === "text" ? (
         <StyledSpan textSettings={textSettings}>
           {textSettings!.value}
@@ -121,6 +132,8 @@ const StyledLogo = styled.img<{ logoSettings?: LogoSettings }>`
   cursor: move;
   width: 100px;
   height: 100px;
+  /* resize: both;
+  overflow: auto; */
   ${({ logoSettings }) =>
     logoSettings &&
     `

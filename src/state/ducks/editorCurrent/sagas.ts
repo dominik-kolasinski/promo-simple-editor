@@ -4,9 +4,6 @@ import apiCaller from "../../utils/apiCaller";
 import { fetchBackgroundError, fetchBackgroundSuccess } from "./actions";
 import { BackgroundRaw, EditorCurrentActionTypes } from "./types";
 
-/**
- * @desc Business logic of effect.
- */
 function* handleFetch(action: MetaAction): Generator {
   try {
     const res: BackgroundRaw | any = yield call(
@@ -25,16 +22,10 @@ function* handleFetch(action: MetaAction): Generator {
   }
 }
 
-/**
- * @desc Watches every specified action and runs effect method and passes action args to it
- */
 function* watchFetchRequest(): Generator {
   yield takeEvery(EditorCurrentActionTypes.FETCH_BACKGROUND, handleFetch);
 }
 
-/**
- * @desc saga init, forks in effects, other sagas
- */
 export default function* editorCurrentSaga() {
   yield all([fork(watchFetchRequest)]);
 }

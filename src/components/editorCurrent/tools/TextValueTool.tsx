@@ -1,16 +1,25 @@
 import React, { useState } from "react";
-import styled from "styled-components";
 import uuidv4 from "uuidv4";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addWorkbenchItem,
   updateWorkbenchItem
 } from "../../../state/ducks/editorCurrent/actions";
+import { WorkbenchItem } from "../../../state/ducks/editorCurrent/types";
+import { ApplicationState } from "../../../state/ducks";
 
+interface TextValueToolState {
+  items: WorkbenchItem[];
+}
 const TextValueTool: React.FC = () => {
   const dispatch = useDispatch();
+  const state: TextValueToolState = useSelector(
+    ({ editorCurrent }: ApplicationState) => ({
+      items: editorCurrent.workbenchItems
+    })
+  );
 
-  const [textAdded, setTextAdded] = useState(false);
+  const textAdded = state.items.filter(item => item.type === "text").length;
   const [textValue, setTextValue] = useState("");
   const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
     setTextValue(e.currentTarget.value);
@@ -19,7 +28,6 @@ const TextValueTool: React.FC = () => {
   const textId = uuidv4();
   const handleTextValueButtonClick = () => {
     if (!textAdded) {
-      setTextAdded(true);
       dispatch(addWorkbenchItem(textToAdd));
     } else {
       const itemUpdate = {

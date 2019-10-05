@@ -82,10 +82,11 @@ export const editorCurrentReducer = (
     }
 
     case EditorCurrentActionTypes.REMOVE_WORKBENCH_ITEM: {
-      const itemToRemoveId = action.payload;
-      // const items = update(state.workbenchItems, { $unset: [itemToRemoveId] });
+      const items = state.workbenchItems.filter(
+        item => item.id !== action.payload
+      );
 
-      return { ...state, workbenchItems: [] };
+      return { ...state, workbenchItems: items };
     }
 
     default:

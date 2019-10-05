@@ -1,14 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDrop, XYCoord } from "react-dnd";
 import { useDispatch, useSelector } from "react-redux";
 import uuidv4 from "uuidv4";
-import html2canvas from "html2canvas";
-import htmlToImage from "html-to-image";
 import { ApplicationState } from "../../state/ducks";
 import {
   updateWorkbenchItem,
-  addWorkbenchItem,
-  removeWorkbenchItem
+  addWorkbenchItem
 } from "../../state/ducks/editorCurrent/actions";
 import {
   WorkbenchItem,
@@ -34,7 +31,7 @@ interface ContainerState {
 
 const Container: React.FC<ContainerProps> = ({ hideSourceOnDrag }) => {
   const dispatch = useDispatch();
-  const containerState: ContainerState = useSelector(
+  const state: ContainerState = useSelector(
     ({ editorCurrent }: ApplicationState) => ({
       items: editorCurrent.workbenchItems
     })
@@ -82,12 +79,6 @@ const Container: React.FC<ContainerProps> = ({ hideSourceOnDrag }) => {
   });
 
   const moveItem = (id: string, left: number, top: number, type: string) => {
-    // dispatch(updateWorkbenchItem({ [id]: { left, top, type } }));
-    // const itemUpdate = {
-    //   type: "text",
-    //   textSettings: { value: textValue, fontColor: "red" }
-    // };
-    // dispatch(updateWorkbenchItem(itemUpdate));
     const itemUpdate = {
       type,
       top,
@@ -98,10 +89,7 @@ const Container: React.FC<ContainerProps> = ({ hideSourceOnDrag }) => {
 
   return (
     <div ref={drop} style={styles} id="workbenchToImage">
-      {/* {deleteVisible && (
-        <button onClick={() => handleItemDelete()}>Delete</button>
-      )} */}
-      {containerState.items.map(item => {
+      {state.items.map(item => {
         return (
           <Item
             type={item.type}
@@ -109,7 +97,6 @@ const Container: React.FC<ContainerProps> = ({ hideSourceOnDrag }) => {
             key={item.id}
             id={item.id}
             hideSourceOnDrag={hideSourceOnDrag}
-            // onCLick={() => handleItemClick(item.id as string)}
           />
         );
       })}

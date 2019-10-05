@@ -1,5 +1,5 @@
 import React from "react";
-import { useDrag, DragSourceMonitor } from "react-dnd";
+import { useDrag } from "react-dnd";
 import styled from "styled-components";
 
 interface LogoProps {
