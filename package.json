@@ -1,0 +1,71 @@
+{
+  "name": "promo-simple-editor",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@types/downloadjs": "^1.4.1",
+    "@types/file-saver": "^2.0.1",
+    "@types/html2canvas": "^0.0.35",
+    "@types/jest": "24.0.18",
+    "@types/node": "12.7.8",
+    "@types/react": "16.9.4",
+    "@types/react-color": "^3.0.1",
+    "@types/react-dom": "16.9.1",
+    "@types/react-resizable": "^1.7.1",
+    "downloadjs": "^1.4.7",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
+    "html-to-image": "^0.1.1",
+    "immutability-helper": "^3.0.1",
+    "lodash": "^4.17.15",
+    "react": "^16.10.1",
+    "react-color": "^2.17.3",
+    "react-dnd": "^9.4.0",
+    "react-dnd-html5-backend": "^9.4.0",
+    "react-dom": "^16.10.1",
+    "react-redux": "^7.1.1",
+    "react-scripts": "3.1.2",
+    "redux": "^4.0.4",
+    "redux-mock-store": "^1.5.3",
+    "redux-saga": "^1.1.1",
+    "redux-saga-test-plan": "^4.0.0-rc.3",
+    "styled-components": "^4.4.0",
+    "styled-components-ts": "^0.0.15",
+    "typesafe-actions": "^4.4.2",
+    "typescript": "3.6.3",
+    "uuidv4": "^5.0.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@types/enzyme": "^3.10.3",
+    "@types/enzyme-adapter-react-16": "^1.0.5",
+    "@types/lodash": "^4.14.141",
+    "@types/react-redux": "^7.1.4",
+    "@types/redux-logger": "^3.0.7",
+    "@types/redux-mock-store": "^1.0.1",
+    "@types/styled-components": "^4.1.19",
+    "jest-fetch-mock": "^2.1.2",
+    "redux-logger": "^3.0.6",
+    "tslint": "^5.20.0"
+  }
+}

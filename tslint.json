@@ -1,0 +1,62 @@
+{
+  "extends": ["tslint:latest", "tslint-react-hooks"],
+  "rules": {
+    "align": [true, "parameters", "statements"],
+    "array-type": [true, "array"],
+    "arrow-parens": [true, "ban-single-arg-parens"],
+    "function-name": false,
+    "import-name": false,
+    "indent": [true, "spaces"],
+    "interface-name": [false, "always-prefix"],
+    "max-line-length": [true, 240],
+    "member-access": [false],
+    "member-ordering": [false],
+    "no-boolean-literal-compare": false,
+    "no-console": true,
+    "no-else-after-return": [true, "allow-else-if"],
+    "no-object-literal-type-assertion": false,
+    "no-submodule-imports": [false],
+    "no-var-requires": [false],
+    "object-curly-spacing": [true, "always"],
+    "object-literal-sort-keys": [false],
+    "ordered-imports": [false],
+    "quotemark": [true, "single", "jsx-double"],
+    "react-hooks-nesting": "error",
+    "semicolon": [true, "never"],
+    "ter-arrow-parens": [true, "as-needed", { "requireForBlockBody": false }],
+    "trailing-comma": [true, { "multiline": "never", "singleline": "never" }],
+    "variable-name": [
+      true,
+      "ban-keywords",
+      "check-format",
+      "allow-leading-underscore",
+      "allow-pascal-case"
+    ],
+    "whitespace": [
+      true,
+      "check-branch",
+      "check-operator",
+      "check-typecast",
+      "check-module"
+    ],
+    "jsx-no-lambda": false,
+    "no-unused-expression": false,
+    "no-shadowed-variable": [
+      true,
+      {
+        "class": false,
+        "enum": false,
+        "interface": false,
+        "typeAlias": false,
+        "typeParameter": false,
+        "import": false
+      }
+    ],
+    "jsx-curly-spacing": [true, "always"],
+    "jsx-space-before-trailing-slash": true,
+    "jsx-boolean-value": false,
+    "jsx-key": true,
+    "jsx-no-multiline-js": false,
+    "jsx-alignment": true
+  }
+}
