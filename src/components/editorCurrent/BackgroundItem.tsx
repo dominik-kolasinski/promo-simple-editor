@@ -25,8 +25,8 @@ const BackgroundItem: React.FC<BackgroundItemProps> = ({
 
 const StyledBackgroundItem = styled.li`
   img {
-    width: 100px;
-    height: 100px;
+    width: 9.2rem;
+    height: 9.2rem;
     object-fit: cover;
     cursor: pointer;
   }

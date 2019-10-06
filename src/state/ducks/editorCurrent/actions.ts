@@ -1,24 +1,25 @@
 import { action } from "typesafe-actions";
+import { uniqueId } from "lodash";
 import {
   EditorCurrentActionTypes,
   BackgroundRaw,
   WorkbenchItem
 } from "./types";
 
-const getRandomSig = () =>
-  `/random?sig=${Math.ceil(Math.random() * 3.14 * 10 + Math.random() * 100)}`;
-
-export const fetchBackground = () =>
-  action(EditorCurrentActionTypes.FETCH_BACKGROUND, [], {
+export const fetchBackground = (terms?: string) => {
+  return action(EditorCurrentActionTypes.FETCH_BACKGROUND, [], {
     method: "get",
-    route: getRandomSig()
+    route: `random?sig=${uniqueId()}`
   });
-
+};
 export const fetchBackgroundSuccess = (img: BackgroundRaw) =>
   action(EditorCurrentActionTypes.FETCH_BACKGROUND_SUCCESS, img);
 
 export const fetchBackgroundError = (message: string) =>
   action(EditorCurrentActionTypes.FETCH_BACKGROUND_ERROR, message);
+
+export const removeFetchedBackgrounds = () =>
+  action(EditorCurrentActionTypes.REMOVE_FETCHED_BACKGROUNDS);
 
 export const setBackgroundImage = (imageUrl: string) =>
   action(EditorCurrentActionTypes.SET_BACKGROUND_IMAGE, imageUrl);

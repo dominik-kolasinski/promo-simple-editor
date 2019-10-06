@@ -1,9 +1,11 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
+import { Download } from "styled-icons/boxicons-regular/Download";
+import htmlToImage from "html-to-image";
 import { ApplicationState } from "../../state/ducks/";
 import Container from "../draggable/Container";
-import htmlToImage from "html-to-image";
+import StyledButton from "../common/StyledButton";
 
 interface WorkbenchState {
   workbenchBackground: string | null;
@@ -28,7 +30,7 @@ const Workbench: React.FC = () => {
   };
 
   return (
-    <div style={{ height: "400px" }}>
+    <div style={{ height: "40rem" }}>
       <div id="workbenchToImage">
         <StyledWorkbenchBackground
           workbenchBackground={state.workbenchBackground}
@@ -36,7 +38,18 @@ const Workbench: React.FC = () => {
           <Container hideSourceOnDrag={true} />
         </StyledWorkbenchBackground>
       </div>
-      <button onClick={() => handleImageDownload()}>download as image</button>
+      <StyledButton
+        onClick={() => handleImageDownload()}
+        style={{
+          width: "17rem",
+          backgroundColor: "#12c2e9",
+          marginTop: "1.6rem"
+        }}
+      >
+        <span>
+          Download as image &nbsp;&nbsp;<Download size={14}></Download>
+        </span>
+      </StyledButton>
     </div>
   );
 };
@@ -45,8 +58,8 @@ const StyledWorkbenchBackground = styled.div<{
   workbenchBackground: string | null;
 }>`
   position: relative;
-  width: 400px;
-  height: 400px;
+  width: 40rem;
+  height: 40rem;
   overflow: hidden;
   background-size: cover;
   background-image: url("/assets/empty_background.bmp");

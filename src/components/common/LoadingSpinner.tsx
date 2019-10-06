@@ -18,12 +18,12 @@ const LoadingSpinner: React.FC = () => (
 
 const StyledSpinner = styled.svg`
   animation: rotate 1s linear infinite;
-  margin: 40px;
-  width: 50px;
-  height: 50px;
+  margin: 4rem;
+  width: 5rem;
+  height: 5rem;
 
   & .path {
-    stroke: #ff4070;
+    stroke: #12c2e9;
     stroke-linecap: round;
     animation: dash 1.5s ease-in-out infinite;
   }

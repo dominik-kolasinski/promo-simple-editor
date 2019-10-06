@@ -28,8 +28,8 @@ const Logo: React.FC<LogoProps> = ({ logoImageUrl }) => {
 };
 
 const StyledThumbnailContainer = styled.div`
-  width: 100px;
-  height: 100px;
+  width: 7.4rem;
+  height: 7.4rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -39,8 +39,8 @@ const StyledThumbnailContainer = styled.div`
 `;
 
 const StyledThumbnailImage = styled.img`
-  width: 100px;
-  height: 100px;
+  width: 7.4rem;
+  height: 7.4rem;
 `;
 
 export default Logo;

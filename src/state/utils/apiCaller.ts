@@ -2,7 +2,7 @@ export default function apiCaller<T>(
   method: string,
   path: string
 ): Promise<T | { imageUrl: string } | null> {
-  return fetch("https://source.unsplash.com" + path, {
+  return fetch("https://source.unsplash.com/" + path, {
     method,
     headers: {
       Accept: "image/jpeg",

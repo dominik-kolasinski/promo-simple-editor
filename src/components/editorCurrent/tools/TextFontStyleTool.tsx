@@ -1,8 +1,13 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import styled from "styled-components";
+import { Italic } from "styled-icons/boxicons-regular/Italic";
+import { Bold } from "styled-icons/boxicons-regular/Bold";
+import { Underline } from "styled-icons/boxicons-regular/Underline";
 import { ApplicationState } from "../../../state/ducks";
 import { WorkbenchItem } from "../../../state/ducks/editorCurrent/types";
 import { updateWorkbenchItem } from "../../../state/ducks/editorCurrent/actions";
+import StyledButton from "../../common/StyledButton";
 
 interface TextFontStyleToolState {
   textItem: WorkbenchItem;
@@ -27,27 +32,40 @@ const TextFontStyleTool: React.FC = () => {
   };
 
   return (
-    <>
-      <button
+    <StyledButtonContainer>
+      <StyledButton
         onClick={() => handleFontStyleButtonClick("bold")}
         disabled={!state.textItem}
       >
-        Bold
-      </button>
-      <button
+        <span>
+          Bold <Bold size={14} />
+        </span>
+      </StyledButton>
+      <StyledButton
         onClick={() => handleFontStyleButtonClick("underline")}
         disabled={!state.textItem}
       >
-        Underline
-      </button>
-      <button
+        <span>
+          Underline <Underline size={14} />
+        </span>
+      </StyledButton>
+      <StyledButton
         onClick={() => handleFontStyleButtonClick("italic")}
         disabled={!state.textItem}
       >
-        Italic
-      </button>
-    </>
+        <span>
+          Italic <Italic size={14} />
+        </span>
+      </StyledButton>
+    </StyledButtonContainer>
   );
 };
+
+const StyledButtonContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+`;
 
 export default TextFontStyleTool;

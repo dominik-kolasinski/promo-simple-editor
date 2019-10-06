@@ -31,6 +31,7 @@
     "redux-saga-test-plan": "^4.0.0-rc.3",
     "styled-components": "^4.4.0",
     "styled-components-ts": "^0.0.15",
+    "styled-icons": "^8.4.2",
     "typesafe-actions": "^4.4.2",
     "typescript": "3.6.3",
     "uuidv4": "^5.0.1"

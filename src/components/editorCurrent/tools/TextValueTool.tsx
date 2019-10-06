@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import uuidv4 from "uuidv4";
 import { useDispatch, useSelector } from "react-redux";
+import styled from "styled-components";
 import {
   addWorkbenchItem,
   updateWorkbenchItem
 } from "../../../state/ducks/editorCurrent/actions";
 import { WorkbenchItem } from "../../../state/ducks/editorCurrent/types";
 import { ApplicationState } from "../../../state/ducks";
+import StyledButton from "../../common/StyledButton";
 
 interface TextValueToolState {
   items: WorkbenchItem[];
@@ -52,18 +54,42 @@ const TextValueTool: React.FC = () => {
     }
   };
   return (
-    <>
-      <input
+    <StyledTextValueContainer>
+      <StyledTextValueInput
         type="text"
         value={textValue}
         onChange={handleChange}
-        placeholder="type something"
+        placeholder="Type something"
       />
-      <button onClick={handleTextValueButtonClick} disabled={!textValue}>
-        {textAdded ? "Update text" : "Add text"}
-      </button>
-    </>
+      <StyledButton
+        onClick={handleTextValueButtonClick}
+        disabled={!textValue}
+        style={{ width: "6rem" }}
+      >
+        {textAdded ? "Update" : "Add"}
+      </StyledButton>
+    </StyledTextValueContainer>
   );
 };
+
+const StyledTextValueContainer = styled.div`
+  display: flex;
+  width: 19rem;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2rem;
+  margin: 1.2rem 1.2rem 0 1.2rem;
+  background: #fff;
+  border: 0 solid rgba(0, 0, 0, 0.25);
+  box-shadow: rgba(0, 0, 0, 0.25) 0 0.1rem 0.4rem;
+  border-radius: 0.4rem;
+`;
+
+const StyledTextValueInput = styled.input`
+  font-size: 1.4rem;
+  height: 2rem;
+  width: 11rem;
+  outline: none;
+`;
 
 export default TextValueTool;

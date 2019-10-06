@@ -115,9 +115,9 @@ const StyledSpan = styled.span<{
 }>`
   position: absolute;
   background: transparent;
-  /* color: #000;
-  font-size: 20px; */
   cursor: move;
+  white-space: nowrap;
+
   ${({ textSettings }) =>
     textSettings &&
     `
@@ -125,15 +125,15 @@ const StyledSpan = styled.span<{
   font-family:${textSettings.font};
   font-size:${textSettings.fontSize}px;
   font-style:${textSettings.fontStyle};
+  font-weight:${textSettings.fontStyle};
+  text-decoration:${textSettings.fontStyle};
   `}
 `;
 const StyledLogo = styled.img<{ logoSettings?: LogoSettings }>`
   position: absolute;
   cursor: move;
-  width: 100px;
-  height: 100px;
-  /* resize: both;
-  overflow: auto; */
+  width: 10rem;
+  height: 10rem;
   ${({ logoSettings }) =>
     logoSettings &&
     `

@@ -1,8 +1,12 @@
 import React from "react";
+import styled from "styled-components";
+import { Plus } from "styled-icons/boxicons-regular/Plus";
+import { Minus } from "styled-icons/boxicons-regular/Minus";
 import { useDispatch, useSelector } from "react-redux";
 import { ApplicationState } from "../../../state/ducks";
 import { WorkbenchItem } from "../../../state/ducks/editorCurrent/types";
 import { updateWorkbenchItem } from "../../../state/ducks/editorCurrent/actions";
+import StyledButton from "../../common/StyledButton";
 
 interface TextSizeToolState {
   textItem: WorkbenchItem;
@@ -35,18 +39,32 @@ const TextSizeTool: React.FC = () => {
   };
 
   return (
-    <>
-      <button onClick={handleTextSizeButtonClickUp} disabled={!state.textItem}>
-        Bigger +
-      </button>
-      <button
-        onClick={handleTextSizeButtonClickDown}
+    <StyledSizeButtonsContainer>
+      <StyledButton
+        onClick={handleTextSizeButtonClickUp}
         disabled={!state.textItem}
       >
-        Smaller -
-      </button>
-    </>
+        <span>
+          Bigger <Plus size={14} />
+        </span>
+      </StyledButton>
+      <StyledButton
+        onClick={() => handleTextSizeButtonClickDown()}
+        disabled={!state.textItem}
+      >
+        <span>
+          Smaller <Minus size={14} />
+        </span>
+      </StyledButton>
+    </StyledSizeButtonsContainer>
   );
 };
+
+const StyledSizeButtonsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+`;
 
 export default TextSizeTool;

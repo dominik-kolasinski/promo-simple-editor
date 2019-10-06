@@ -34,7 +34,7 @@ export interface WorkbenchItem {
 }
 
 export interface EditorCurrentState {
-  readonly images: BackgroundRaw[];
+  images: BackgroundRaw[];
   readonly loading: boolean;
   readonly errors: [];
   workbenchBackground: string | null;
@@ -43,9 +43,10 @@ export interface EditorCurrentState {
 
 export const EditorCurrentActionTypes = {
   // fetching from api related actions
-  FETCH_BACKGROUND: "@@background/FETCH_BACKGROUND",
-  FETCH_BACKGROUND_SUCCESS: "@@background/FETCH_BACKGROUND_SUCCESS",
-  FETCH_BACKGROUND_ERROR: "@@background/FETCH_BACKGROUND_ERROR",
+  FETCH_BACKGROUND: "@@editorCurrent/FETCH_BACKGROUND",
+  FETCH_BACKGROUND_SUCCESS: "@@editorCurrent/FETCH_BACKGROUND_SUCCESS",
+  FETCH_BACKGROUND_ERROR: "@@editorCurrent/FETCH_BACKGROUND_ERROR",
+  REMOVE_FETCHED_BACKGROUNDS: "@@editorCurrent/REMOVE_FETCHED_BACKGROUNDS",
 
   // editor related actions
   SET_BACKGROUND_IMAGE: "@@editorCurrent/SET_BACKGROUND_IMAGE",
@@ -56,7 +57,8 @@ export const EditorCurrentActionTypes = {
 };
 
 export interface EditorCurrentDispatchToProps {
-  fetchBackground: () => MetaAction;
+  fetchBackground: (terms?: string) => MetaAction;
+  removeFetchedBackgrounds: () => void;
   setBackgroundImage: (imageUrl: string) => void;
   removeBackgroundImage: () => void;
   addWorkbenchItem: (add: WorkbenchItem) => void;
