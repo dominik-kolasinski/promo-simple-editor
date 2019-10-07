@@ -26,7 +26,7 @@ describe("Background actions", () => {
       [],
       {
         method: "get",
-        route: "/random?sig=1"
+        route: "random?sig=1"
       }
     );
 

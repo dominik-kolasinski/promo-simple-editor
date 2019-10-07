@@ -4,12 +4,7 @@
     "module": "esnext",
     "moduleResolution": "node",
     "target": "es5",
-    "lib": [
-      "es6",
-      "es2017",
-      "dom",
-      "esnext.asynciterable"
-    ],
+    "lib": ["es6", "es2017", "dom", "esnext.asynciterable"],
     "sourceMap": true,
     "allowJs": true,
     "jsx": "react",
@@ -25,13 +20,6 @@
     "isolatedModules": true,
     "noEmit": true
   },
-  "exclude": [
-    "node_modules",
-    "jest"
-  ],
-  "include": [
-    "src/**/*.d.ts",
-    "src/**/*.ts",
-    "src/**/*.tsx"
-  ]
+  "exclude": ["node_modules", "jest"],
+  "include": ["src/**/*.d.ts", "src/**/*.ts", "src/**/*.tsx"]
 }

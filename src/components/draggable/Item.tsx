@@ -84,17 +84,9 @@ const Item: React.FC<ItemProps> = ({
       onContextMenu={event => handleContextClick(event)}
       tabIndex={-1}
     >
-      {isContextMenuOpen && (
-        <div
-          ref={refClicked}
-          style={{
-            position: "absolute",
-            zIndex: 1000
-          }}
-        >
-          <button onClick={() => handleItemDelete(id)}>Delete</button>
-        </div>
-      )}
+      <StyledContextMenu ref={refClicked} isContextMenuOpen={isContextMenuOpen}>
+        <button onClick={() => handleItemDelete(id)}>Remove</button>
+      </StyledContextMenu>
       {type === "text" ? (
         <StyledSpan textSettings={textSettings}>
           {textSettings!.value}
@@ -109,6 +101,45 @@ const Item: React.FC<ItemProps> = ({
     </div>
   );
 };
+
+const StyledContextMenu = styled.div<{
+  isContextMenuOpen: boolean;
+}>`
+  transition: all 0.2s ease-in-out;
+  top: -2.4rem;
+  position: absolute;
+  z-index: 1000;
+
+  button {
+    height: 0;
+    opacity: 0;
+    top: -1rem;
+  }
+
+  ${({ isContextMenuOpen }) =>
+    isContextMenuOpen &&
+    `
+  button {
+    opacity:1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #c471ed;
+    color: #fff;
+    border: none;
+    border-radius: 0.4rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    height: 2.4rem;
+    width: 5.8rem;
+    margin: 0.4rem 0;
+    &:focus {
+      outline: none;
+    }
+  }
+  `}
+`;
 
 const StyledSpan = styled.span<{
   textSettings?: TextSettings;
