@@ -47,7 +47,7 @@ const TextValueTool: React.FC = () => {
     type: "text",
     textSettings: {
       value: textValue,
-      font: "Arial, Helvetica, sans-serif",
+      font: "'Arial', Helvetica, sans-serif",
       fontSize: 20,
       fontColor: "#000",
       fontStyle: "none"

@@ -43,6 +43,13 @@ const TextFontTool: React.FC = () => {
           value="'Arial', Helvetica, sans-serif"
           disabled={!state.textItem}
           onChange={handleOptionChange}
+          checked={
+            !!(
+              state.textItem! &&
+              state.textItem!.textSettings!.font! ===
+                "'Arial', Helvetica, sans-serif"
+            )
+          }
         />
         <RadioButtonLabel />
         Arial
@@ -54,6 +61,13 @@ const TextFontTool: React.FC = () => {
           value="'Times New Roman', Times, serif"
           disabled={!state.textItem}
           onChange={handleOptionChange}
+          checked={
+            !!(
+              state.textItem! &&
+              state.textItem!.textSettings!.font! ===
+                "'Times New Roman', Times, serif"
+            )
+          }
         />
         <RadioButtonLabel />
         Times New Roman
@@ -65,6 +79,12 @@ const TextFontTool: React.FC = () => {
           value="'Open Sans', sans-serif"
           disabled={!state.textItem}
           onChange={handleOptionChange}
+          checked={
+            !!(
+              state.textItem! &&
+              state.textItem!.textSettings!.font! === "'Open Sans', sans-serif"
+            )
+          }
         />
         <RadioButtonLabel />
         Open Sans
