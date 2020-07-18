@@ -17,7 +17,7 @@
     "enzyme-adapter-react-16": "^1.14.0",
     "html-to-image": "^0.1.1",
     "immutability-helper": "^3.0.1",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "react": "^16.10.1",
     "react-color": "^2.17.3",
     "react-dnd": "^9.4.0",
